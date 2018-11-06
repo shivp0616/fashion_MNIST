@@ -2,7 +2,7 @@
 """
 @author: shivp1606
 """
-
+#inporting the necessary libraries
 import tensorflow as tf
 from tensorflow import keras
 import numpy as np
@@ -24,21 +24,23 @@ X_train = X_train / 255.0
 X_test = X_test / 255.0
 
 
+'''
 #Display the first 5 images from the training set and display the class name
-#plt.figure(figsize=(10,10))
-#for i in range(5):
-    #plt.subplot(5,5,i+1)
-    #plt.xticks([])
-    #plt.yticks([])
-    #plt.grid(False)
-    #plt.imshow(X_train[i], cmap=plt.cm.binary)
-    #plt.xlabel(class_names[train_labels[i]])
+plt.figure(figsize=(10,10))
+for i in range(5):
+    plt.subplot(5,5,i+1)
+    plt.xticks([])
+    plt.yticks([])
+    plt.grid(False)
+    plt.imshow(X_train[i], cmap=plt.cm.binary)
+    plt.xlabel(class_names[train_labels[i]])
+'''
 
-
-#build the model\
-#Flatten layer transforms the format of the images from a 2d-array (of 28 by 28 pixels)
-#to a 1d-array of 28 * 28 = 784 pixels.
-#Dense layer are densely-connected, or fully-connected, neural layers.
+#build the model
+'''Flatten layer transforms the format of the images from a 2d-array (of 28 by 28 pixels)
+   to a 1d-array of 28 * 28 = 784 pixels.
+   Dense layer are densely-connected, or fully-connected, neural layers.
+'''
 model = keras.Sequential([
     keras.layers.Flatten(input_shape=(28, 28)),
     keras.layers.Dense(128, activation=tf.nn.relu),
@@ -51,7 +53,10 @@ model.compile(optimizer=tf.train.AdamOptimizer(),
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
+
+#Training the model
 model.fit(X_train, y_train, epochs=10)
+
 
 #Evaluate accuracy
 test_loss, test_acc = model.evaluate(X_test, y_test)
