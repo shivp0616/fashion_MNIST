@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 """
 @author: shivp1606
@@ -40,6 +41,9 @@ for i in range(5):
 '''Flatten layer transforms the format of the images from a 2d-array (of 28 by 28 pixels)
    to a 1d-array of 28 * 28 = 784 pixels.
    Dense layer are densely-connected, or fully-connected, neural layers.
+   
+   In the last layer, we have taken the units as 10 because there are 10 different classes in the target.
+   Each unit will be responsible for their respective class. They will generate a probablity and the one having the highest will be selected.
 '''
 model = keras.Sequential([
     keras.layers.Flatten(input_shape=(28, 28)),
