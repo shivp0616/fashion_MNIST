@@ -1,4 +1,3 @@
-
 # -*- coding: utf-8 -*-
 """
 @author: shivp1606
@@ -65,3 +64,10 @@ model.fit(X_train, y_train, epochs=10)
 #Evaluate accuracy
 test_loss, test_acc = model.evaluate(X_test, y_test)
 print('Test accuracy:', test_acc)
+
+#you can also predict the class of some new image
+#but note that the image should also be in the same format and size as of those on which we have trained.
+#for that we can use model.predict() method
+predictions = model.predict(X_test[0])
+predictions[0]
+np.argmax(predictions[0])
